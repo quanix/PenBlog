@@ -23,4 +23,4 @@ Django、pymongo和pytz
 ##启动方式
 
 1. sudo nginx -c penblog_nginx.conf
-2. uwsgi -d --ini PenBlog.ini
+2. uwsgi -d --ini penblog_uwsgi.ini
