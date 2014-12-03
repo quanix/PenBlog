@@ -4,7 +4,10 @@ from PenBlog.func import render_and_back
 
 __author__ = 'quanix'
 
-def home(request, text):
-    print 'text:'+text
+def show_homepage(request, page):
 
-    return render_and_back(request,'index.html',{})
+    page = int(page)
+
+    return render_and_back(request, 'index.html', {
+        'page': '首页'
+    })

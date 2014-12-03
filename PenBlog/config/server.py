@@ -2,8 +2,8 @@
 
 DEBUG = True
 
-DATABASE_HOST = '127.0.0.1'
-DATABASE_PORT = 27017
+DATABASE_HOST = '192.168.139.132'
+DATABASE_PORT = 27018
 DATABASE_USERNAME = None
 DATABASE_PASSWORD = None
 
@@ -11,8 +11,8 @@ STR_NAME = 'Name'
 STR_ADMINS = 'Administrators'
 
 BLOGS = {
-    '127.0.0.1:8000':{
+    'lihaoquan.me':{
         STR_NAME: 'PenBlog',
-        STR_ADMINS: 'pen',
+        STR_ADMINS: 'lihaoquan',
     }
 }

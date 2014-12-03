@@ -1,4 +1,4 @@
-# Django settings for realBlog project.
+# Django settings for penBlog project.
 
 from config import server
 
