@@ -11,4 +11,5 @@ urlpatterns = patterns('',
 
     #首页
     url(r'^$', views.show_homepage, {'page': 1}),
+    url( r'^install/$', views.install),
 )

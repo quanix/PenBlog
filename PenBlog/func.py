@@ -39,7 +39,7 @@ def connect_mongodb_database(request):
 
     c = Connection(host)
 
-    return c['PenBlog_blogs_' + name]
+    return c['PenBlogDB_' + name]
 
 
 
@@ -63,11 +63,41 @@ def render_and_back(request, template, d):
     :return:
     """
 
-    #db = connect_mongodb_database(request)
+    db = connect_mongodb_database(request)
 
-    # 设定模板目录
-    d['theme'] = 'Zine'
-    set_template_dir('themes', d['theme'])
+    print '>>>>数据库获取信息'
+
+    info = db.infos.find_one(fields={
+        'Theme': 1,
+        'Title': 1,
+        'Subtitle': 1,
+        'Description': 1,
+        'CustomRss': 1,
+        'WeiboCode': 1,
+        'CommentCode': 1,
+        'LatestCommentsCode': 1,
+        'StatisticsCode': 1,
+        'StatisticsCodeInHead': 1
+    })
+
+    current_theme = 'Zine'
+
+    set_template_dir('themes', current_theme)
+
+    d['host'] = request.get_host()
+    d['user'] = request.session.get('user')
+    d['theme'] = current_theme
+
+    if info is not None:
+        # 增加项
+        d['info'] = info
+        d['title'] = info['Title']
+
+
     t = get_template(template)
     html = t.render(Context(d))
+
+    # 关闭数据库
+    db.connection.close()
+
     return HttpResponse(html)
