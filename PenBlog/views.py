@@ -7,6 +7,12 @@ from PenBlog.func import *
 __author__ = 'quanix'
 
 def show_homepage(request, page):
+    """
+    博客首页
+    :param request:
+    :param page:
+    :return:
+    """
 
     db = connect_mongodb_database(request)
 
@@ -21,7 +27,11 @@ def show_homepage(request, page):
 
 
 def install(request):
-
+    """
+    安装页面
+    :param request:
+    :return:
+    """
     blog = get_current_blog(request)
 
     admin = blog[STR_ADMINS]
@@ -36,3 +46,33 @@ def install(request):
             'name': blog[STR_NAME],
             'admins': admins
         })
+
+
+
+def get_file(request, ext):
+    """
+    获取静态文件
+    :param request:
+    :param ext:
+    :return:
+    """
+    path = request.path
+    abspath = os.path.abspath('.') + '/' + 'PenBlog' + path
+    if os.sep != '/':
+        abspath = abspath.replace('/', '\\')
+
+    stream = open(abspath, 'rb').read()
+    mine = query_mine_type(ext)
+
+    return HttpResponse(stream, mimetype=mine)
+
+
+def logout(request):
+    """
+    登出
+    :param request:
+    :return:
+    """
+    if 'user' in request.session:
+        del request.session['user']
+    return redirect(request, '已退出', 'admin/', 0)
