@@ -1869,7 +1869,7 @@ div#logo-holder {
   text-indent: -9999px;
   margin-left: -4px;
   outline: none;
-  background: url(/admin/image/logo-0317.png) no-repeat 0 50%;
+  /*background: url(/admin/image/logo-0317.png) no-repeat 0 50%;*/
 }
 #logo a:active {
   position: relative;

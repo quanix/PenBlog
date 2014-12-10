@@ -67,7 +67,7 @@ div#logo-holder {
   text-indent: -9999px;
   margin-left: -5px;
   outline: none;
-  background: url(/admin/image/logo-0317.png) no-repeat 0 center;
+  /*background: url(/admin/image/logo-0317.png) no-repeat 0 center;*/
 }
 #logo a:active {
   position: relative;
@@ -252,7 +252,7 @@ z-index: 10;
   text-indent: -9999px;
   position: relative;
   width: 500px;
-  background: url(/admin/image/startpage.png) no-repeat left bottom;
+  /*background: url(/admin/image/startpage.png) no-repeat left bottom;*/
 }
 #startpage #login-wrap {
   margin: 0 auto;

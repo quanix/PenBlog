@@ -186,6 +186,7 @@ def login(request):
         url = ''
         if 'redirect' in request.GET:
             url = urllib2.unquote(request.GET['redirect'])
+
         return redirect(request, '登陆成功', url or 'admin/', 0)
 
 
