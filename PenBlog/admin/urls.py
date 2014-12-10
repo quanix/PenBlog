@@ -9,7 +9,11 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
 
+    # 文章
     url(r'^$', article.show_articles),
+    # 分类
 
-    # Articles
+    # 连接
+
+    # 设置
 )
