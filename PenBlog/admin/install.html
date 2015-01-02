@@ -10,9 +10,23 @@
 <script type="text/javascript" src="/admin/script/crypto-sha1.js"></script>
 <script type="text/javascript" src="/admin/script/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
-function login()
-{
+function login() {
 
+    var source = $('#username').val() + $('#password').val();
+    var bytes = Crypto.SHA1(source, {asBytes:true});
+    var hash = Crypto.util.bytesToHex(bytes);
+
+    var now = new Date();
+    var dateStr = now.getYear() + '/' + now.getMonth() + '/' + now.getDay();
+
+    source = hash + dateStr;
+    bytes = Crypto.SHA1(source, { asBytes: true });
+    hash = Crypto.util.bytesToHex(bytes);
+
+    $('#date').val(dateStr)
+    $('#passwordHash').val(hash);
+
+    document.forms[0].submit();
 }
 </script>
 </head>
